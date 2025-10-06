@@ -13,16 +13,15 @@ enum {
     BLOCK_SHAPE_L,
     BLOCK_SHAPE_R_L,
     BLOCK_SHAPE_RECT,
-    BLOCK_SHAPE_COUNT,
-    BLOCK_SHAPE_NONE
+    BLOCK_SHAPE_COUNT
 };
 
 typedef UINT BLOCK_HEADING;
 enum {
     BLOCK_HEADING_UP,
     BLOCK_HEADING_RIGHT,
-    BLOCK_HEADING_LEFT,
     BLOCK_HEADING_DOWN,
+    BLOCK_HEADING_LEFT,
     BLOCK_HEADING_COUNT
 };
 
@@ -38,12 +37,14 @@ enum {
     CUBE_TYPE_COUNT
 };
 
-BOOL      FdInitialize(VOID);
-BOOL      FdUninitialize(VOID);
-BOOL      FdMoveBlockDown(VOID);
-BOOL      FdMoveBlockLeft(VOID);
-BOOL      FdMoveBlockRight(VOID);
-BOOL      FdSetCurrentBlock(BOOL bRandom, BLOCK_SHAPE Shape);
-CUBE_TYPE FdGetScreenCube(INT x, INT y);
+BOOL        FdInitialize(VOID);
+BOOL        FdUninitialize(VOID);
+BOOL        FdMoveBlockDown(VOID);
+BOOL        FdMoveBlockLeft(VOID);
+BOOL        FdMoveBlockRight(VOID);
+BOOL        FdTurnBlock(VOID);
+BOOL        FdSetCurrentBlock(BOOL bRandom, BLOCK_SHAPE Shape);
+CUBE_TYPE   FdGetScreenCube(INT x, INT y);
+BLOCK_SHAPE FdGetCurrentBlockShape(VOID);
 
 #endif /* GAME_FIELD_H */  
