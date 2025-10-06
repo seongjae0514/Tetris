@@ -242,7 +242,7 @@ static BOOL FdpSetCurrentBlock(BOOL bRandom, BLOCK_SHAPE Shape)
 
         NTSTATUS status = BCryptGenRandom(
             NULL,
-            &CurrentBlock.Shape,
+            (PUCHAR)&CurrentBlock.Shape,
             sizeof(CurrentBlock.Shape),
             BCRYPT_USE_SYSTEM_PREFERRED_RNG
         );

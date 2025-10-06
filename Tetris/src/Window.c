@@ -20,7 +20,7 @@ BOOL WndpRegisterClass(HINSTANCE hInstance, WNDPROC lpfnWndProc)
     wc.hInstance     = hInstance;
     wc.hCursor       = LoadCursor(NULL, IDC_ARROW);
     wc.lpszClassName = szMainWindowClass;
-    wc.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
+    wc.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
     wc.lpfnWndProc   = lpfnWndProc;
 
     atomMainClass = RegisterClass(&wc);
@@ -33,7 +33,7 @@ BOOL WndpCreateWindow(HINSTANCE hInstance, LPCTSTR lpszWindowName, INT nWidth, I
     hMainWindow = CreateWindow(
         szMainWindowClass,
         lpszWindowName,
-        WS_OVERLAPPEDWINDOW,
+        WS_OVERLAPPEDWINDOW | WS_VISIBLE,
         CW_USEDEFAULT, CW_USEDEFAULT,
         nWidth, nHeight,
         NULL,

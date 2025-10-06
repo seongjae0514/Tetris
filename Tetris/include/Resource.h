@@ -1,0 +1,23 @@
+#ifndef GAME_RESOURCE_H
+#define GAME_RESOURCE_H
+
+#include <Windows.h>
+#include <TChar.h>
+
+typedef UINT RESOURCE_BITMAP;
+enum {
+    RESOURCE_BITMAP_VOID,
+    RESOURCE_BITMAP_RED,
+    RESOURCE_BITMAP_ORANGE,
+    RESOURCE_BITMAP_YELLOW,
+    RESOURCE_BITMAP_GREEN,
+    RESOURCE_BITMAP_BLUE,
+    RESOURCE_BITMAP_PINK,
+    RESOURCE_BITMAP_COUNT
+};
+
+BOOL    RsInitialize(HINSTANCE hInstance, LPCTSTR* BitmapNamesArray);
+BOOL    RsUninitialize(VOID);
+HBITMAP RsGetBitmapHandle(RESOURCE_BITMAP Index);
+
+#endif

@@ -21,12 +21,27 @@
     <ClCompile Include="src\Field.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="src\Renderer.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Resource.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Main.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Window.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="include\Field.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Renderer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Resource.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
