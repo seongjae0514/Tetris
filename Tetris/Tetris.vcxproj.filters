@@ -44,5 +44,42 @@
     <ClInclude Include="include\Resource.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="resource\resource_name.h">
+      <Filter>리소스 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource\resource.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resource\blue.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="resource\green.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="resource\logo.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="resource\pink.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="resource\preview.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="resource\red.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="resource\void.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="resource\wall.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="resource\yellow.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

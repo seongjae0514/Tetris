@@ -1,0 +1,8 @@
+#include "resource_name.h"
+
+IDB_CUBE_VOID   BITMAP "void.bmp"
+IDB_CUBE_RED    BITMAP "red.bmp"
+IDB_CUBE_YELLOW BITMAP "yellow.bmp"
+IDB_CUBE_GREEN  BITMAP "green.bmp"
+IDB_CUBE_BLUE   BITMAP "blue.bmp"
+IDB_CUBE_PINK   BITMAP "pink.bmp"

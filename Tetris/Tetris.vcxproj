@@ -30,6 +30,21 @@
     <ClInclude Include="include\Renderer.h" />
     <ClInclude Include="include\Resource.h" />
     <ClInclude Include="include\Window.h" />
+    <ClInclude Include="resource\resource_name.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource\resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resource\blue.bmp" />
+    <Image Include="resource\green.bmp" />
+    <Image Include="resource\logo.bmp" />
+    <Image Include="resource\pink.bmp" />
+    <Image Include="resource\preview.bmp" />
+    <Image Include="resource\red.bmp" />
+    <Image Include="resource\void.bmp" />
+    <Image Include="resource\wall.bmp" />
+    <Image Include="resource\yellow.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -84,7 +99,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)\include;</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)\include;$(ProjectDir)\resource;</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

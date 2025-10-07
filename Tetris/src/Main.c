@@ -5,6 +5,7 @@
 #include "Field.h"
 #include "Renderer.h"
 #include "Resource.h"
+#include "resource_name.h"
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
@@ -42,17 +43,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 INT APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, INT nCmdShow)
 {
     LPCTSTR bitmapNames[] = {
-        TEXT("image\\void.bmp"),
-        TEXT("image\\red.bmp"),
-        TEXT("image\\red.bmp"),
-        TEXT("image\\red.bmp"),
-        TEXT("image\\red.bmp"),
-        TEXT("image\\red.bmp"),
-        TEXT("image\\red.bmp")
+        MAKEINTRESOURCE(IDB_CUBE_VOID),
+        MAKEINTRESOURCE(IDB_CUBE_RED),
+        MAKEINTRESOURCE(IDB_CUBE_YELLOW),
+        MAKEINTRESOURCE(IDB_CUBE_GREEN),
+        MAKEINTRESOURCE(IDB_CUBE_BLUE),
+        MAKEINTRESOURCE(IDB_CUBE_PINK),
+        MAKEINTRESOURCE(IDB_CUBE_WALL)
     };
 
     WndInitialize(hInstance, TEXT("Tetris"), 500, 500, WndProc);
-    RsInitialize(NULL, bitmapNames);
+    RsInitialize(hInstance, bitmapNames);
     RdInitialize();
     FdInitialize();
 
