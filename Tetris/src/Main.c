@@ -6,18 +6,28 @@
 #include "Renderer.h"
 #include "Resource.h"
 #include "resource_name.h"
+#include "winbase.h"
 
-LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK WndProc(_In_     HWND   hWnd,
+                         _In_opt_ UINT   uMsg, 
+                         _In_     WPARAM wParam,
+                         _In_     LPARAM lParam)
 {
     switch (uMsg)
     {
+
+        case WM_CREATE:
+        {
+            SetTimer(hWnd, 1, 1000, NULL);
+            return 0;
+        }
 
         case WM_PAINT:
         {
             PAINTSTRUCT ps;
             HDC hDC = BeginPaint(hWnd, &ps);
 
-            RdRenderAll(hWnd, hDC, 20);
+            RdRenderAll(hWnd, hDC, 35);
 
             EndPaint(hWnd, &ps);
             return 0;
@@ -33,6 +43,42 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         {
             InvalidateRect(hWnd, NULL, TRUE);
             break;
+        }
+
+        case WM_KEYDOWN:
+        {
+            switch (wParam)
+            {
+                case VK_LEFT:
+                {
+                    FdMoveBlockLeft();
+                    break;
+                }
+                case VK_RIGHT:
+                {
+                    FdMoveBlockRight();
+                    break;
+                }
+                case VK_SPACE:
+                {
+                    FdTurnBlock();
+                    break;
+                }
+                case VK_DOWN:
+                {
+                    FdMoveBlockDown();
+                    break;
+                }
+            }
+            InvalidateRect(hWnd, NULL, TRUE);
+            return 0;
+        }
+
+        case WM_TIMER:
+        {
+            FdMoveBlockDown();
+            InvalidateRect(hWnd, NULL, TRUE);
+            return 0;
         }
 
     }

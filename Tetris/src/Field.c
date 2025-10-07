@@ -302,7 +302,7 @@ static BOOL FdpCopyCurrentBlockToBufferField(VOID)
                 continue;
             }
 
-            BufferField[CurrentBlock.Y + i][CurrentBlock.X + j] = Block[CurrentBlock.Heading][CurrentBlock.Shape][i][j];
+            BufferField[CurrentBlock.Y + i][CurrentBlock.X + j] = Block[CurrentBlock.Shape][CurrentBlock.Heading][i][j];
         }
     }
 
@@ -320,7 +320,7 @@ static BOOL FdpCopyCurrentBlockToMainField(VOID)
                 continue;
             }
 
-            MainField[CurrentBlock.Y + i][CurrentBlock.X + j] = Block[CurrentBlock.Heading][CurrentBlock.Shape][i][j];
+            MainField[CurrentBlock.Y + i][CurrentBlock.X + j] = Block[CurrentBlock.Shape][CurrentBlock.Heading][i][j];
         }
     }
 
@@ -345,6 +345,8 @@ BOOL FdInitialize(VOID)
 {
     FdpInitializeField();
     FdpSetCurrentBlock(TRUE, 0);
+    FdpFlushMainFieldToBufferField();
+    FdpCopyCurrentBlockToBufferField();
     return TRUE;
 }
 
@@ -421,7 +423,15 @@ BOOL FdTurnBlock(VOID)
 
 BOOL FdSetCurrentBlock(BOOL bRandom, BLOCK_SHAPE Shape)
 {
-    return FdpSetCurrentBlock(bRandom, Shape);
+    if (!FdpSetCurrentBlock(bRandom, Shape))
+    {
+        return FALSE;
+    }
+
+    FdpFlushMainFieldToBufferField();
+    FdpCopyCurrentBlockToBufferField();
+
+    return TRUE;
 }
 
 
