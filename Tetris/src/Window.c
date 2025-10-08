@@ -72,5 +72,10 @@ BOOL WndGetClientRect(LPRECT lpRect)
     return GetClientRect(hMainWindow, lpRect);
 }
 
+BOOL WndUpdateWindow(VOID)
+{
+    return InvalidateRect(hMainWindow, NULL, FALSE);
+}
+
 
 

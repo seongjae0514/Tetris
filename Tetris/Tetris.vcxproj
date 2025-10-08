@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -24,9 +24,11 @@
     <ClCompile Include="src\Renderer.c" />
     <ClCompile Include="src\Resource.c" />
     <ClCompile Include="src\Window.c" />
+    <ClCompile Include="src\WinMain.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Field.h" />
+    <ClInclude Include="include\Main.h" />
     <ClInclude Include="include\Renderer.h" />
     <ClInclude Include="include\Resource.h" />
     <ClInclude Include="include\Window.h" />

@@ -8,5 +8,6 @@ extern BOOL WndInitialize     (HINSTANCE hInstance, LPCTSTR lpszWindowName, INT 
 extern BOOL WndUninitialize   (VOID);
 extern HWND WndGetWindowHandle(VOID);
 extern BOOL WndGetClientRect  (LPRECT lpRect);
+extern BOOL WndUpdateWindow   (VOID);
 
 #endif /* GAME_WINDOW_H */
