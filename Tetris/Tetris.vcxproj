@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Block.c" />
     <ClCompile Include="src\Field.c" />
     <ClCompile Include="src\Main.c" />
     <ClCompile Include="src\Renderer.c" />
@@ -27,6 +28,7 @@
     <ClCompile Include="src\WinMain.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Block.h" />
     <ClInclude Include="include\Field.h" />
     <ClInclude Include="include\Main.h" />
     <ClInclude Include="include\Renderer.h" />

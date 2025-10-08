@@ -7,6 +7,7 @@
 #include "Field.h"
 #include "Renderer.h"
 #include "Resource.h"
+#include "Block.h"
 #include "resource_name.h"
 
 /* Variables ***************/
@@ -15,9 +16,41 @@ static UINT_PTR uTimerId;
 
 /* Functions ***************/
 
-static VOID TimerProc(HWND hWnd, UINT uMsg, UINT_PTR wParam, DWORD lParam)
+static VOID BlockDown(VOID)
 {
-    FdMoveBlockDown();
+    FdUpdateBufferField();
+    if (!BlMoveBlockDown())
+    {
+        BlFixBlock();
+        FdClearLine();
+        FdUpdateBufferField();
+        BlSetBlock(TRUE, 0);
+    }
+    BlDrawBlockInBuffer();
+    WndUpdateWindow();
+}
+
+static VOID BlockLeft(VOID)
+{
+    FdUpdateBufferField();
+    BlMoveBlockLeft();
+    BlDrawBlockInBuffer();
+    WndUpdateWindow();
+}
+
+static VOID BlockRight(VOID)
+{
+    FdUpdateBufferField();
+    BlMoveBlockRight();
+    BlDrawBlockInBuffer();
+    WndUpdateWindow();
+}
+
+static VOID BlockTurn(VOID)
+{
+    FdUpdateBufferField();
+    BlTurnBlock();
+    BlDrawBlockInBuffer();
     WndUpdateWindow();
 }
 
@@ -35,10 +68,14 @@ VOID MainInit(VOID)
     RsInitialize(GetModuleHandle(NULL), bitmapNames);
     RdInitialize();
     FdInitialize();
+    BlInitialize();
 
-    FdSetCurrentBlock(TRUE, 0);
+    BlSetBlock(TRUE, 0);
+
+    FdUpdateBufferField();
+    BlDrawBlockInBuffer();
     
-    uTimerId = SetTimer(NULL, 0, 1000, TimerProc);
+    uTimerId = SetTimer(NULL, 0, 1000, (TIMERPROC)BlockDown);
 }
 
 VOID MainEnd(VOID)
@@ -47,30 +84,27 @@ VOID MainEnd(VOID)
     FdUninitialize();
     RdUninitialize();
     RsUninitialize();
+    BlUninitialize();
 }
 
 VOID MainLeftKeyDown(VOID)
 {
-    FdMoveBlockLeft();
-    WndUpdateWindow();
+    BlockLeft();
 }
 
 VOID MainRightKeyDown(VOID)
 {
-    FdMoveBlockRight();
-    WndUpdateWindow();
+    BlockRight();
 }
 
 VOID MainDownKeyDown(VOID)
 {
-    FdMoveBlockDown();
-    WndUpdateWindow();
+    BlockDown();
 }
 
 VOID MainSpaceKeyDown(VOID)
 {
-    FdTurnBlock();
-    WndUpdateWindow();
+    BlockTurn();
 }
 
 VOID MainOnRender(VOID)

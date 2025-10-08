@@ -49,7 +49,7 @@ static BOOL RdpRenderField(HWND hDestWindow, HDC hDestDC, UINT uCubeSizePx)
     {
         for (INT j = 0; j < FIELD_WIDTH; j++)
         {
-            HBITMAP hBitmap = RsGetBitmapHandle(RdpCubeTypeToBitmapIndex(FdGetScreenCube(j, i)));
+            HBITMAP hBitmap = RsGetBitmapHandle(RdpCubeTypeToBitmapIndex(FdGetBufferCube(j, i)));
             HBITMAP hOldBitmap;
             BITMAP  bmp;
             

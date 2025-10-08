@@ -27,6 +27,15 @@
     <ClCompile Include="src\Resource.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="src\Main.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WinMain.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Block.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Window.h">
@@ -43,6 +52,12 @@
     </ClInclude>
     <ClInclude Include="resource\resource_name.h">
       <Filter>리소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Main.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Block.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

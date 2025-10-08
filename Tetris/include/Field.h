@@ -4,27 +4,6 @@
 #define FIELD_WIDTH  12
 #define FIELD_HEIGHT 20
 
-typedef UINT BLOCK_SHAPE;
-enum {
-    BLOCK_SHAPE_T,
-    BLOCK_SHAPE_I,
-    BLOCK_SHAPE_S,
-    BLOCK_SHAPE_R_S,
-    BLOCK_SHAPE_L,
-    BLOCK_SHAPE_R_L,
-    BLOCK_SHAPE_RECT,
-    BLOCK_SHAPE_COUNT
-};
-
-typedef UINT BLOCK_HEADING;
-enum {
-    BLOCK_HEADING_UP,
-    BLOCK_HEADING_RIGHT,
-    BLOCK_HEADING_DOWN,
-    BLOCK_HEADING_LEFT,
-    BLOCK_HEADING_COUNT
-};
-
 typedef UINT CUBE_TYPE;
 enum {
     CUBE_TYPE_VOID,
@@ -38,13 +17,15 @@ enum {
 
 BOOL        FdInitialize(VOID);
 BOOL        FdUninitialize(VOID);
-BOOL        FdMoveBlockDown(VOID);
-BOOL        FdMoveBlockLeft(VOID);
-BOOL        FdMoveBlockRight(VOID);
-BOOL        FdTurnBlock(VOID);
-BOOL        FdSetCurrentBlock(BOOL bRandom, BLOCK_SHAPE Shape);
-BOOL        FdClearLine();
-CUBE_TYPE   FdGetScreenCube(INT x, INT y);
-BLOCK_SHAPE FdGetCurrentBlockShape(VOID);
+
+BOOL        FdClearLine(VOID);
+
+CUBE_TYPE   FdGetBufferCube(INT x, INT y);
+BOOL        FdSetBufferCube(INT x, INT y, CUBE_TYPE CubeType);
+
+CUBE_TYPE   FdGetMainCube(INT x, INT y);
+BOOL        FdSetMainCube(INT x, INT y, CUBE_TYPE CubeType);
+
+BOOL        FdUpdateBufferField(VOID);
 
 #endif /* GAME_FIELD_H */  
