@@ -339,14 +339,62 @@ static BOOL FdpFlushMainFieldToBufferField(VOID)
     return TRUE;
 }
 
+static BOOL FdpIsLineComplete(UINT LineIndex)
+{
+    for (INT i = 0; i < FIELD_WIDTH; i++)
+    {
+        if (MainField[LineIndex][i] == CUBE_TYPE_VOID)
+        {
+            return FALSE;
+        }
+    }
+    return TRUE;
+}
+
+static BOOL FdpDownMainField(UINT LineIndex)
+{
+    if (LineIndex == 0)
+    {
+        return FALSE;
+    }
+
+    for (UINT i = LineIndex; i > 0; i--)
+    {
+        for (INT j = 0; j < FIELD_WIDTH; j++)
+        {
+            MainField[i][j] = MainField[i - 1][j];
+        }
+    }
+
+    return TRUE;
+}
+
+static BOOL FdpClearLine(VOID)
+{
+    for (INT i = 1; i < FIELD_HEIGHT; i++)
+    {
+        if (FdpIsLineComplete(i))
+        {
+            FdpDownMainField(i);
+        }
+    }
+    return TRUE;
+}
+
+static BOOL FdpUpdateBufferField(VOID)
+{
+    FdpFlushMainFieldToBufferField();
+    FdpCopyCurrentBlockToBufferField();
+    return TRUE;
+}
+
 /* Public functions ***********/
 
 BOOL FdInitialize(VOID)
 {
     FdpInitializeField();
     FdpSetCurrentBlock(TRUE, 0);
-    FdpFlushMainFieldToBufferField();
-    FdpCopyCurrentBlockToBufferField();
+    FdpUpdateBufferField();
     return TRUE;
 }
 
@@ -360,9 +408,9 @@ BOOL FdMoveBlockDown(VOID)
     if (FdpIsBlockContact(CurrentBlock.Shape, CurrentBlock.Heading, CurrentBlock.X, CurrentBlock.Y + 1))
     {
         FdpCopyCurrentBlockToMainField();
+        FdpClearLine();
         FdpSetCurrentBlock(TRUE, 0);
-        FdpFlushMainFieldToBufferField();
-        FdpCopyCurrentBlockToBufferField();
+        FdpUpdateBufferField();
         return FALSE;
     }
 
@@ -428,12 +476,15 @@ BOOL FdSetCurrentBlock(BOOL bRandom, BLOCK_SHAPE Shape)
         return FALSE;
     }
 
-    FdpFlushMainFieldToBufferField();
-    FdpCopyCurrentBlockToBufferField();
+    FdpUpdateBufferField();
 
     return TRUE;
 }
 
+BOOL FdClearLine(VOID)
+{
+    return FdpClearLine();
+}
 
 CUBE_TYPE FdGetScreenCube(INT x, INT y)
 {

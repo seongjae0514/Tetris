@@ -43,6 +43,7 @@ BOOL        FdMoveBlockLeft(VOID);
 BOOL        FdMoveBlockRight(VOID);
 BOOL        FdTurnBlock(VOID);
 BOOL        FdSetCurrentBlock(BOOL bRandom, BLOCK_SHAPE Shape);
+BOOL        FdClearLine();
 CUBE_TYPE   FdGetScreenCube(INT x, INT y);
 BLOCK_SHAPE FdGetCurrentBlockShape(VOID);
 
