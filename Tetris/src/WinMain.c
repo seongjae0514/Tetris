@@ -75,7 +75,8 @@ INT APIENTRY _tWinMain(_In_     HINSTANCE hInstance,
                        _In_     INT       nCmdShow)
 {
     MSG  msg         = { 0 };
-    HWND hMainWindow = WndInitialize(hInstance, TEXT("Tetris"), 1000, 1000, WndProc);
+    HWND hMainWindow;
+    WndInitialize(hInstance, TEXT("Tetris"), 1000, 1000, WndProc);
 
     while (GetMessage(&msg, NULL, 0, 0))
     {

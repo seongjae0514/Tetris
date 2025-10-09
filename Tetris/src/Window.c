@@ -2,6 +2,7 @@
 
 #include <Windows.h>
 #include <tchar.h>
+#include <StrSafe.h>
 
 #include "Window.h"
 
@@ -77,5 +78,24 @@ BOOL WndUpdateWindow(VOID)
     return InvalidateRect(hMainWindow, NULL, FALSE);
 }
 
+BOOL WndDestroy(VOID)
+{
+    return DestroyWindow(hMainWindow);
+}
 
+BOOL WndMessageBoxF(UINT uType, LPCTSTR lpszTitle, LPCTSTR lpszFormat, ...)
+{
+    TCHAR   buffer[256];
+    va_list args;
 
+    va_start(args, lpszFormat);
+    StringCchVPrintf(buffer, _countof(buffer), lpszFormat, args);
+    va_end(args);
+
+    return MessageBox(
+        hMainWindow,
+        buffer,
+        lpszTitle,
+        uType
+    );
+}
