@@ -9,5 +9,7 @@ extern BOOL WndUninitialize   (VOID);
 extern HWND WndGetWindowHandle(VOID);
 extern BOOL WndGetClientRect  (LPRECT lpRect);
 extern BOOL WndUpdateWindow   (VOID);
+extern BOOL WndDestroy        (VOID);
+extern BOOL WndMessageBoxF    (UINT uType, LPCTSTR lpszTitle, LPCTSTR lpszFormat, ...);
 
 #endif /* GAME_WINDOW_H */

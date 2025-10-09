@@ -24,7 +24,18 @@ static VOID BlockDown(VOID)
         BlFixBlock();
         FdClearLine();
         FdUpdateBufferField();
-        BlSetBlock(TRUE, 0);
+        
+        if (!BlSetBlock(TRUE, 0))
+        {
+            KillTimer(NULL, uTimerId);
+            WndMessageBoxF(
+                MB_OK | MB_ICONINFORMATION,
+                TEXT("게임 오버"),
+                TEXT("게임 오버!")
+            );
+            WndDestroy();
+            return;
+        }
     }
     BlDrawBlockInBuffer();
     WndUpdateWindow();
@@ -123,8 +134,33 @@ VOID MainOnRender(VOID)
 
     /* 백버퍼 구성 */
 
-    hMemDC = CreateCompatibleDC(hDC);
-    hMemBitmap = CreateCompatibleBitmap(hDC, clientRect.right, clientRect.bottom);
+    if (!(hMemDC = CreateCompatibleDC(hDC)))
+    {
+        KillTimer(NULL, uTimerId);
+        WndMessageBoxF(
+            MB_OK | MB_ICONERROR,
+            TEXT("오류"),
+            TEXT("DC 생성을 실패했습니다. \n"
+                 "오류 코드: %d"),
+            GetLastError()
+        );
+        WndDestroy();
+        return;
+    }
+
+    if (!(hMemBitmap = CreateCompatibleBitmap(hDC, clientRect.right, clientRect.bottom)))
+    {
+        KillTimer(NULL, uTimerId);
+        WndMessageBoxF(
+            MB_OK | MB_ICONERROR,
+            TEXT("오류"),
+            TEXT("비트맵 생성을 실패했습니다. \n"
+                 "오류 코드: %d"),
+            GetLastError()
+        );
+        WndDestroy();
+        return;
+    }
 
     hOldBitmap = SelectObject(hMemDC, hMemBitmap);
 
