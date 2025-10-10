@@ -282,7 +282,7 @@ static BOOL BlpCopyCurrentBlockToMainField(VOID)
 
 BOOL BlInitialize(VOID)
 {
-    srand(time(NULL));
+    srand((unsigned int)time(NULL));
     return TRUE;
 }
 

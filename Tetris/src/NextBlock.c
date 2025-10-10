@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include <TChar.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "Block.h"
 #include "NextBlock.h"
@@ -36,7 +37,7 @@ static BOOL NbpPushBlock(BLOCK_SHAPE Shape)
 
 BOOL NbInitialize(VOID)
 {
-    srand(time(NULL));
+    srand((unsigned int)time(NULL));
 
     for (UINT i = 0; i < NEXT_BLOCK_COUNT; i++)
     {
