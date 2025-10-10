@@ -8,6 +8,14 @@
 /* Variables ************************************************/
 
 static HBITMAP Bitmaps[RESOURCE_BITMAP_COUNT];
+static LPCTSTR BitmapNames[] = {
+    MAKEINTRESOURCE(IDB_CUBE_VOID),
+    MAKEINTRESOURCE(IDB_CUBE_RED),
+    MAKEINTRESOURCE(IDB_CUBE_YELLOW),
+    MAKEINTRESOURCE(IDB_CUBE_GREEN),
+    MAKEINTRESOURCE(IDB_CUBE_BLUE),
+    MAKEINTRESOURCE(IDB_CUBE_PINK)
+};
 
 /* Private functions ****************************************/
 
@@ -35,9 +43,9 @@ static BOOL RspUnloadBitmaps(VOID)
 
 /* Public functions *****************************************/
 
-BOOL RsInitialize(HINSTANCE hInstance, LPCTSTR* BitmapNamesArray)
+BOOL RsInitialize(HINSTANCE hInstance)
 {
-    if (!RspLoadBitmaps(hInstance, BitmapNamesArray))
+    if (!RspLoadBitmaps(hInstance, BitmapNames))
     {
         RsUninitialize();
         return FALSE;

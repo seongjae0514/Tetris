@@ -53,9 +53,6 @@
     <ClInclude Include="include\Resource.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="resource\resource_name.h">
-      <Filter>리소스 파일</Filter>
-    </ClInclude>
     <ClInclude Include="include\Main.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>

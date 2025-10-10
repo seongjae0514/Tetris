@@ -9,7 +9,6 @@
 #include "Resource.h"
 #include "Block.h"
 #include "NextBlock.h"
-#include "resource_name.h"
 
 /* Variables ***************/
 
@@ -68,16 +67,7 @@ static VOID BlockTurn(VOID)
 
 VOID MainInit(VOID)
 {
-    LPTSTR bitmapNames[] = {
-        MAKEINTRESOURCE(IDB_CUBE_VOID),
-        MAKEINTRESOURCE(IDB_CUBE_RED),
-        MAKEINTRESOURCE(IDB_CUBE_YELLOW),
-        MAKEINTRESOURCE(IDB_CUBE_GREEN),
-        MAKEINTRESOURCE(IDB_CUBE_BLUE),
-        MAKEINTRESOURCE(IDB_CUBE_PINK)
-    };
-
-    RsInitialize(GetModuleHandle(NULL), bitmapNames);
+    RsInitialize(GetModuleHandle(NULL));
     RdInitialize();
     FdInitialize();
     BlInitialize();

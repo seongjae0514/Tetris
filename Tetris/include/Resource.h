@@ -1,6 +1,16 @@
 #ifndef GAME_RESOURCE_H
 #define GAME_RESOURCE_H
 
+#define IDB_CUBE_VOID   100
+#define IDB_CUBE_RED    101
+#define IDB_CUBE_YELLOW 103
+#define IDB_CUBE_GREEN  104
+#define IDB_CUBE_BLUE   105
+#define IDB_CUBE_PINK   106
+#define IDB_CUBE_WALL   107
+
+#ifndef RC_INVOKED
+
 #include <Windows.h>
 #include <TChar.h>
 
@@ -15,8 +25,10 @@ enum {
     RESOURCE_BITMAP_COUNT
 };
 
-BOOL    RsInitialize(HINSTANCE hInstance, LPCTSTR* BitmapNamesArray);
+BOOL    RsInitialize(HINSTANCE hInstance);
 BOOL    RsUninitialize(VOID);
 HBITMAP RsGetBitmapHandle(RESOURCE_BITMAP Index);
+
+#endif
 
 #endif

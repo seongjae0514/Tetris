@@ -36,7 +36,6 @@
     <ClInclude Include="include\Renderer.h" />
     <ClInclude Include="include\Resource.h" />
     <ClInclude Include="include\Window.h" />
-    <ClInclude Include="resource\resource_name.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource\resource.rc" />
