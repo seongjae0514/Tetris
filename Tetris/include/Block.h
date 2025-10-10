@@ -2,6 +2,7 @@
 #define GAME_BLOCK_H
 
 #include <Windows.h>
+#include "Field.h"
 
 typedef UINT BLOCK_SHAPE;
 enum {
@@ -34,5 +35,6 @@ BOOL        BlSetBlock(BOOL bRandom, BLOCK_SHAPE Shape);
 BLOCK_SHAPE BlGetBlock(VOID);
 BOOL        BlFixBlock(VOID);
 BOOL        BlDrawBlockInBuffer(VOID);
+CUBE_TYPE   BlGetBlockShapeCube(BLOCK_SHAPE Shape, BLOCK_HEADING Heading, INT X, INT Y);
 
 #endif

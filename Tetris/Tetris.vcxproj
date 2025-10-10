@@ -22,6 +22,7 @@
     <ClCompile Include="src\Block.c" />
     <ClCompile Include="src\Field.c" />
     <ClCompile Include="src\Main.c" />
+    <ClCompile Include="src\NextBlock.c" />
     <ClCompile Include="src\Renderer.c" />
     <ClCompile Include="src\Resource.c" />
     <ClCompile Include="src\Window.c" />
@@ -31,6 +32,7 @@
     <ClInclude Include="include\Block.h" />
     <ClInclude Include="include\Field.h" />
     <ClInclude Include="include\Main.h" />
+    <ClInclude Include="include\NextBlock.h" />
     <ClInclude Include="include\Renderer.h" />
     <ClInclude Include="include\Resource.h" />
     <ClInclude Include="include\Window.h" />
