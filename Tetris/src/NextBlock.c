@@ -2,13 +2,12 @@
 
 #include <Windows.h>
 #include <TChar.h>
-#include <BCrypt.h>
+#include <stdlib.h>
 
 #include "Block.h"
+#include "NextBlock.h"
 
 /* Global variables ************/
-
-#define NEXT_BLOCK_COUNT 4
 
 static BLOCK_SHAPE NextBlocks[NEXT_BLOCK_COUNT];
 
@@ -16,15 +15,12 @@ static BLOCK_SHAPE NextBlocks[NEXT_BLOCK_COUNT];
 
 static BLOCK_SHAPE NbpGenerateBlock(VOID)
 {
-    BLOCK_SHAPE shape;
-    BCryptGenRandom(NULL, (PUCHAR)&shape, sizeof(shape), BCRYPT_USE_SYSTEM_PREFERRED_RNG);
-
-    return shape % BLOCK_SHAPE_COUNT;
+    return rand() % BLOCK_SHAPE_COUNT;
 }
 
-static VOID NbpPushBlock(BLOCK_SHAPE Shape)
+static BOOL NbpPushBlock(BLOCK_SHAPE Shape)
 {
-    BlSetBlock(FALSE, NextBlocks[0]);
+    BOOL b = BlSetBlock(FALSE, NextBlocks[0]);
 
     for (UINT i = 0; i < NEXT_BLOCK_COUNT - 1; i++)
     {
@@ -32,12 +28,16 @@ static VOID NbpPushBlock(BLOCK_SHAPE Shape)
     }
 
     NextBlocks[NEXT_BLOCK_COUNT - 1] = Shape;
+
+    return b;
 }
 
 /* Global functions ************/
 
 BOOL NbInitialize(VOID)
 {
+    srand(time(NULL));
+
     for (UINT i = 0; i < NEXT_BLOCK_COUNT; i++)
     {
         NextBlocks[i] = NbpGenerateBlock();
@@ -65,6 +65,5 @@ BLOCK_SHAPE NbGetNextBlock(UINT Index)
 
 BOOL NbNewBlock(BOOL bRandom, BLOCK_SHAPE Shape)
 {
-    NbpPushBlock(bRandom ? NbpGenerateBlock() : Shape);
-    return TRUE;
+    return NbpPushBlock(bRandom ? NbpGenerateBlock() : Shape);
 }

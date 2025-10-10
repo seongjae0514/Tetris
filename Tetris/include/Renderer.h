@@ -6,10 +6,16 @@
 
 #include "Field.h"
 
+typedef struct _RENDERER_DATA {
+    UINT FieldCubeSizePx;
+    UINT NextBlockCubeSizePx;
+    UINT NextBlockPaddingPx;
+} RENDERER_DATA, *PRENDERER_DATA;
+
 BOOL RdInitialize(VOID);
 BOOL RdUninitialize(VOID);
 
-BOOL RdRenderAll(HWND hWnd, HDC hDC, UINT uCubeSizePx);
+BOOL RdRenderAll(HWND hWnd, HDC hDC, PRENDERER_DATA lpRenderData);
 
 
 

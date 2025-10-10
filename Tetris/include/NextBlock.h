@@ -4,6 +4,8 @@
 #include <Windows.h>
 #include "Block.h"
 
+#define NEXT_BLOCK_COUNT 4
+
 BOOL        NbInitialize(VOID);
 BOOL        NbUninitialize(VOID);
 BLOCK_SHAPE NbGetNextBlock(UINT Index);

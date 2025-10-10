@@ -4,6 +4,9 @@
 #include <Windows.h>
 #include "Field.h"
 
+#define BLOCK_MOLD_WIDTH  4
+#define BLOCK_MOLD_HEIGHT 4
+
 typedef UINT BLOCK_SHAPE;
 enum {
     BLOCK_SHAPE_T,

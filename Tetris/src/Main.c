@@ -8,6 +8,7 @@
 #include "Renderer.h"
 #include "Resource.h"
 #include "Block.h"
+#include "NextBlock.h"
 #include "resource_name.h"
 
 /* Variables ***************/
@@ -25,7 +26,7 @@ static VOID BlockDown(VOID)
         FdClearLine();
         FdUpdateBufferField();
         
-        if (!BlSetBlock(TRUE, 0))
+        if (!NbNewBlock(TRUE, 0))
         {
             KillTimer(NULL, uTimerId);
             WndMessageBoxF(
@@ -80,8 +81,7 @@ VOID MainInit(VOID)
     RdInitialize();
     FdInitialize();
     BlInitialize();
-
-    BlSetBlock(TRUE, 0);
+    NbInitialize();
 
     FdUpdateBufferField();
     BlDrawBlockInBuffer();
@@ -96,6 +96,7 @@ VOID MainEnd(VOID)
     RdUninitialize();
     RsUninitialize();
     BlUninitialize();
+    NbUninitialize();
 }
 
 VOID MainLeftKeyDown(VOID)
@@ -120,12 +121,13 @@ VOID MainSpaceKeyDown(VOID)
 
 VOID MainOnRender(VOID)
 {
-    PAINTSTRUCT ps;
-    HDC         hDC;
-    HDC         hMemDC;
-    HBITMAP     hMemBitmap;
-    HBITMAP     hOldBitmap;
-    RECT        clientRect;
+    PAINTSTRUCT   ps;
+    HDC           hDC;
+    HDC           hMemDC;
+    HBITMAP       hMemBitmap;
+    HBITMAP       hOldBitmap;
+    RECT          clientRect;
+    RENDERER_DATA rendererData;
 
     /* 페인트 초기화 */
 
@@ -166,7 +168,11 @@ VOID MainOnRender(VOID)
 
     /* 렌더 */
 
-    RdRenderAll(WndGetWindowHandle(), hMemDC, 35);
+    rendererData.FieldCubeSizePx = 35;
+    rendererData.NextBlockCubeSizePx = 15;
+    rendererData.NextBlockPaddingPx = 15;
+
+    RdRenderAll(WndGetWindowHandle(), hMemDC, &rendererData);
 
     /* 정리 */
 

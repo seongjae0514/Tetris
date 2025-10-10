@@ -381,7 +381,7 @@ BOOL BlDrawBlockInBuffer(VOID)
     return BlpCopyCurrentBlockToBufferField();
 }
 
-CUBE_TYPE BlGetBlockShapeCube(BLOCK_SHAPE Shape, BLOCK_HEADING Heading, UINT X, UINT Y)
+CUBE_TYPE BlGetBlockShapeCube(BLOCK_SHAPE Shape, BLOCK_HEADING Heading, INT X, INT Y)
 {
     if (Shape >= BLOCK_SHAPE_COUNT || Heading >= BLOCK_HEADING_COUNT ||
         X >= MOLD_WIDTH || Y >= MOLD_HEIGHT)
