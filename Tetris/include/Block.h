@@ -7,6 +7,7 @@
 #define BLOCK_MOLD_WIDTH  4
 #define BLOCK_MOLD_HEIGHT 4
 
+
 typedef UINT BLOCK_SHAPE;
 enum {
     BLOCK_SHAPE_T,
@@ -28,6 +29,12 @@ enum {
     BLOCK_HEADING_COUNT
 };
 
+typedef struct _BLOCK {
+    BLOCK_SHAPE   Shape;
+    BLOCK_HEADING Heading;
+    INT           X, Y;
+} BLOCK, * PBLOCK;
+
 BOOL        BlInitialize(VOID);
 BOOL        BlUninitialize(VOID);
 BOOL        BlTurnBlock(VOID);
@@ -39,5 +46,7 @@ BLOCK_SHAPE BlGetBlock(VOID);
 BOOL        BlFixBlock(VOID);
 BOOL        BlDrawBlockInBuffer(VOID);
 CUBE_TYPE   BlGetBlockShapeCube(BLOCK_SHAPE Shape, BLOCK_HEADING Heading, INT X, INT Y);
+BOOL        BlIsContact(BLOCK_SHAPE Shape, BLOCK_HEADING Heading, UINT PositionX, UINT PositionY);
+BOOL        BlGetBlockInformation(PBLOCK pBlock);
 
 #endif

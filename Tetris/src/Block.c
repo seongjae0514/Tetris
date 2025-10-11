@@ -17,15 +17,9 @@
 #define BLOCK_START_POSITION_X 4
 #define BLOCK_START_POSITION_Y 0
 
-typedef struct _CURRENT_BLOCK {
-    BLOCK_SHAPE   Shape;
-    BLOCK_HEADING Heading;
-    INT           X, Y;
-} CURRENT_BLOCK, * PCURRENT_BLOCK;
-
 /* Global variables ***********/
 
-static const CUBE_TYPE     Block[BLOCK_SHAPE_COUNT][BLOCK_HEADING_COUNT][MOLD_HEIGHT][MOLD_WIDTH] = {
+static const CUBE_TYPE Block[BLOCK_SHAPE_COUNT][BLOCK_HEADING_COUNT][MOLD_HEIGHT][MOLD_WIDTH] = {
     // T
     {
         {
@@ -216,7 +210,7 @@ static const CUBE_TYPE     Block[BLOCK_SHAPE_COUNT][BLOCK_HEADING_COUNT][MOLD_HE
         }
     }
 };
-static       CURRENT_BLOCK CurrentBlock;
+static       BLOCK     CurrentBlock;
 
 /* Private functions **********/
 
@@ -390,4 +384,18 @@ CUBE_TYPE BlGetBlockShapeCube(BLOCK_SHAPE Shape, BLOCK_HEADING Heading, INT X, I
     }
 
     return Block[Shape][Heading][Y][X];
+}
+
+BOOL BlIsContact(BLOCK_SHAPE Shape, BLOCK_HEADING Heading, UINT PositionX, UINT PositionY)
+{
+    return BlpIsContact(Shape, Heading, PositionX, PositionY);
+}
+
+BOOL BlGetBlockInformation(PBLOCK pBlock)
+{
+    if (pBlock)
+    {
+        *pBlock = CurrentBlock;
+    }
+    return TRUE;
 }

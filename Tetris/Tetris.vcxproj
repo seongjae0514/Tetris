@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Block.c" />
+    <ClCompile Include="src\BlockPreview.c" />
     <ClCompile Include="src\Field.c" />
     <ClCompile Include="src\Main.c" />
     <ClCompile Include="src\NextBlock.c" />
@@ -30,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Block.h" />
+    <ClInclude Include="include\BlockPreview.h" />
     <ClInclude Include="include\Field.h" />
     <ClInclude Include="include\Main.h" />
     <ClInclude Include="include\NextBlock.h" />

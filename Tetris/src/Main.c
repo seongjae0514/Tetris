@@ -9,6 +9,7 @@
 #include "Resource.h"
 #include "Block.h"
 #include "NextBlock.h"
+#include "BlockPreview.h"
 
 /* Variables ***************/
 
@@ -16,9 +17,16 @@ static UINT_PTR uTimerId;
 
 /* Functions ***************/
 
-static VOID BlockDown(VOID)
+static VOID UpdateFieldAndScreen(VOID)
 {
     FdUpdateBufferField();
+    BpvDrawPreviewBlockInBuffer();
+    BlDrawBlockInBuffer();
+    WndUpdateWindow();
+}
+
+static VOID BlockDown(VOID)
+{
     if (!BlMoveBlockDown())
     {
         BlFixBlock();
@@ -37,32 +45,25 @@ static VOID BlockDown(VOID)
             return;
         }
     }
-    BlDrawBlockInBuffer();
-    WndUpdateWindow();
+    UpdateFieldAndScreen();
 }
 
 static VOID BlockLeft(VOID)
 {
-    FdUpdateBufferField();
     BlMoveBlockLeft();
-    BlDrawBlockInBuffer();
-    WndUpdateWindow();
+    UpdateFieldAndScreen();
 }
 
 static VOID BlockRight(VOID)
 {
-    FdUpdateBufferField();
     BlMoveBlockRight();
-    BlDrawBlockInBuffer();
-    WndUpdateWindow();
+    UpdateFieldAndScreen();
 }
 
 static VOID BlockTurn(VOID)
 {
-    FdUpdateBufferField();
     BlTurnBlock();
-    BlDrawBlockInBuffer();
-    WndUpdateWindow();
+    UpdateFieldAndScreen();
 }
 
 VOID MainInit(VOID)
@@ -73,8 +74,7 @@ VOID MainInit(VOID)
     BlInitialize();
     NbInitialize();
 
-    FdUpdateBufferField();
-    BlDrawBlockInBuffer();
+    UpdateFieldAndScreen();
     
     uTimerId = SetTimer(NULL, 0, 1000, (TIMERPROC)BlockDown);
 }
