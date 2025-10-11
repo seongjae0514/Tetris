@@ -108,7 +108,7 @@ static BOOL RdpRenderNextBlock(HWND hDestWindow, HDC hDestDC, UINT uCubeSizePx, 
     {
         for (INT j = 0; j < BLOCK_MOLD_WIDTH; j++)
         {
-            HBITMAP hBitmap = RsGetBitmapHandle(RdpCubeTypeToBitmapIndex(BlGetBlockShapeCube(NbGetNextBlock(NextBlockIndex), BLOCK_HEADING_UP, i, j)));
+            HBITMAP hBitmap = RsGetBitmapHandle(RdpCubeTypeToBitmapIndex(BlGetBlockShapeCube(NbGetNextBlock(NextBlockIndex), BLOCK_HEADING_UP, j, i)));
             HBITMAP hOldBitmap;
             BITMAP  bmp;
 

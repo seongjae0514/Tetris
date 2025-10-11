@@ -39,6 +39,9 @@
     <ClCompile Include="src\NextBlock.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="src\BlockPreview.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Window.h">
@@ -60,6 +63,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="include\NextBlock.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BlockPreview.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
