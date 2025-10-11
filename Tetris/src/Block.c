@@ -282,7 +282,7 @@ static BOOL BlpCopyCurrentBlockToMainField(VOID)
 
 BOOL BlInitialize(VOID)
 {
-    srand(time(NULL));
+    srand((unsigned int)time(NULL));
     return TRUE;
 }
 
@@ -379,4 +379,15 @@ BOOL BlFixBlock(VOID)
 BOOL BlDrawBlockInBuffer(VOID)
 {
     return BlpCopyCurrentBlockToBufferField();
+}
+
+CUBE_TYPE BlGetBlockShapeCube(BLOCK_SHAPE Shape, BLOCK_HEADING Heading, INT X, INT Y)
+{
+    if (Shape >= BLOCK_SHAPE_COUNT || Heading >= BLOCK_HEADING_COUNT ||
+        X >= MOLD_WIDTH || Y >= MOLD_HEIGHT)
+    {
+        return 0;
+    }
+
+    return Block[Shape][Heading][Y][X];
 }

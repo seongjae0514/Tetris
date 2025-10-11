@@ -36,6 +36,9 @@
     <ClCompile Include="src\Block.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="src\NextBlock.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Window.h">
@@ -50,13 +53,13 @@
     <ClInclude Include="include\Resource.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="resource\resource_name.h">
-      <Filter>리소스 파일</Filter>
-    </ClInclude>
     <ClInclude Include="include\Main.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="include\Block.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NextBlock.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
